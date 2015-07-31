@@ -1,21 +1,45 @@
 function chunk(arr, size) {
-  //question from http://www.freecodecamp.com/challenges/bonfire-chunky-monkey
-  var newArr = [];
-  
-  for (var x = 0; x < 2; x++) {
-    for (var y = 0; y < 2; y++) {
-      x = [x][y];
-      y = [x][y];
-      newArr.push([x,y]);
-    }
-  }
+  // Break it up.
+  var newArrChild = [];
+  var newArrMother = [];
+  x = 0;
+  y = arr.length/size;
+  /*var x = 3;
+  var y = 5;
 
- // var test = [];
- // for(var i = 0; i < 100; i++){
- //    test.push([i, "lol"]);
-  //}
-  
-  return newArr;
+  newArrChild.push(arr[0]);
+  newArrChild.push(arr[1]);
+  console.log(newArrChild);
+  newArrMother.push(newArrChild);
+  newArrChild = [];
+  x = 22;
+  y = 45;
+  newArrChild.push(arr[2]);
+  newArrChild.push(arr[3]);
+  newArrMother.push(newArrChild);
+  console.log(newArrMother[0][0]);
+  console.log(newArrMother[0][1]);
+  console.log(newArrMother[1][0]);
+  console.log(newArrMother[1][1]);*/
+ for (var h = 0; h < y; h++) {
+    for (var i = x; i < size; i++) {
+      if (i === size-1) {
+        //push the last number and resest Child Array
+        newArrChild.push(arr[i]);
+        newArrMother.push(newArrChild);
+        newArrChild = [];
+        console.log("this is x " + x);
+        console.log("this is size " + size);
+      } else {
+        newArrChild.push(arr[i]);
+        console.log("pushed");
+      }
+    }
+    x = x + y;
+    size = size + y;
+ }
+ 
+  return newArrMother;
 }
 
-chunk(['a', 'b', 'c', 'd'], 2);
+chunk([0, 1, 2, 3, 4, 5], 3);
