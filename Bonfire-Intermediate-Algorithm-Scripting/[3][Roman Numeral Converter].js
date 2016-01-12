@@ -52,22 +52,24 @@ function toLetters(number) {
 
 
 function convert(num) {
-  var whole, decimal;
-  var newArr = [];
+  
+  var whole, 
+      decimal,
+      roman,
+      newArr = [];
+  
+  //operation to get number >= 10
   whole = Math.floor(num/10);
   whole = whole * 10;
-  console.log(whole);
-  whole = toLetters(whole);
-  console.log(whole);
-  
+  whole = toLetters(whole); //get the equivalent roman numeral
+
+  //operation to get number < 10
   decimal = num % 10;
-  console.log(decimal);
-  decimal = toLetters(decimal);
-  console.log(decimal);
-  newArr = [whole, decimal];
-  console.log(newArr);
+  decimal = toLetters(decimal); //get the equivalent roman numeral
   
-  var roman;
+  //store in array for joining
+  newArr = [whole, decimal];
+  //join the array to form the roman numeral
   roman = newArr.join('');
   return roman;
 }
